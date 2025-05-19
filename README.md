@@ -1,9 +1,9 @@
-# STM
+# TCRA
 This repository contains the PyTorch code for the paper:
 
-[Improving the Transferability of Adversarial Examples with Arbitrary Style Transfer](https://arxiv.org/abs/2308.10601).
+[Boosting Adversarial Transferability by Exponentially Tilting Curvature-Regularized Gradients].
 
-which has been accepted by ACM MM 2023.
+which has been submitted to NeurIPS 2025.
 > We also include the code in the framework [TransferAttack](https://github.com/Trustworthy-AI-Group/TransferAttack).
 ## Requirements
 * python == 3.7.11
@@ -21,20 +21,20 @@ which has been accepted by ACM MM 2023.
 
 ## Qucik Start
 ### Prepare the data and models.
-1. We have prepared the ImageNet-compatible dataset in this program and put the data in **'./dataset/'**.
+1. We have prepared the ImageNet-compatible dataset in the framework [PGN](https://github.com/Trustworthy-AI-Group/PGN) and put the data in **'./dataset/'**.
 
 2. The normally trained models (i.e., Inc-v3, Inc-v4, IncRes-v2, Res-50, Res-101, Res-100) are from "pretrainedmodels", if you use it for the first time, it will download the weight of the model automatically, just wait for it to finish. 
 
 3. The adversarially trained models (i.e, ens3_adv_inc_v3, ens4_adv_inc_v3, ens_adv_inc_res_v2) are from [SSA](https://github.com/yuyang-long/SSA) or [tf_to_torch_model](https://github.com/ylhz/tf_to_pytorch_model). For more detailed information on how to use them, visit these two repositories.
 
-### STM Attack Method
-The traditional baseline attacks and our proposed STM attack methods are in the file __"Incv3_STM_Attacks.py"__.
+### TCRA Attack Method
+Our proposed TCRA method is in the file __"Incv3_TCRA_Attacks.py"__. The traditional baseline attacks are in the file __"Incv3_STM_Attacks.py"__.
 All the provided codes generate adversarial examples on Inception_v3 model. If you want to attack other models, replace the model in **main()** function.
 
 ### Runing attack
 1. You can run our proposed attack as follows. 
 ```
-python Incv3_STM_Attacks.py
+python Incv3_TCRA_Attacks.py
 ```
 We also provide the implementations of other baseline attack methods in our code, just change them to the corresponding attack methods in the **main()** function.
 
@@ -45,13 +45,3 @@ python verify.py
 ## Acknowledgments
 The codes mainly references: [SSA](https://github.com/yuyang-long/SSA) and [styleAug](https://github.com/philipjackson/style-augmentation)
 
-## Citation
-If you use this code for your research, please cite our paper.
-```
-@inproceedings{ge2023improving,
-     title={{Improving the Transferability of Adversarial Examples with Arbitrary Style Transfer}},
-     author={Zhijin Ge and Fanhua Shang and Hongying Liu and Yuanyuan Liu and Liang Wan and Wei Feng and Xiaosen Wang},
-     booktitle={Proceedings of the ACM International Conference on Multimedia},
-     year={2023}
-}
-```
